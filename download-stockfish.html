@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Stockfish for Chess Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #e94560;
+        }
+
+        h1 {
+            color: #e94560;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        p, li {
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .step {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #28a745;
+        }
+
+        .step strong {
+            color: #28a745;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+
+        .warning {
+            background: rgba(255, 193, 7, 0.2);
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .warning strong {
+            color: #ffc107;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #3498db;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            background: none;
+            padding: 0;
+            display: block;
+            white-space: pre;
+        }
+
+        .success {
+            background: rgba(40, 167, 69, 0.2);
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .success strong {
+            color: #28a745;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Setup Stockfish for Your Chess Game</h1>
+        
+        <p>To enable AI opponent and game analysis features, you need to set up the Stockfish chess engine. Follow these simple steps:</p>
+
+        <h2>📥 Quick Setup (Recommended)</h2>
+
+        <div class="step">
+            <strong>Step 1: Download Stockfish.js</strong>
+            <p>Click one of these download links:</p>
+            <div class="center">
+                <a href="https://github.com/nmrugg/stockfish.js/releases/download/10.0.2/stockfish.js" class="download-btn" download>
+                    ⬇️ Download Stockfish.js
+                </a>
+                <a href="https://github.com/nmrugg/stockfish.js/releases/download/10.0.2/stockfish.wasm.js" class="download-btn" download>
+                    ⬇️ Download Stockfish WASM (Faster)
+                </a>
+            </div>
+            <p style="margin-top: 10px;"><em>Note: WASM version is faster but requires both .js and .wasm files</em></p>
+        </div>
+
+        <div class="step">
+            <strong>Step 2: Place the File</strong>
+            <p>Move the downloaded file to the same folder as your <code>chess.html</code> file:</p>
+            <div class="code-block">
+                <code>📁 Desktop/chs/
+├── chess.html
+├── stockfish.js  ← Place here
+└── README.md</code>
+            </div>
+        </div>
+
+        <div class="step">
+            <strong>Step 3: Update chess.html</strong>
+            <p>Open <code>chess.html</code> in a text editor and find line ~1039:</p>
+            <div class="code-block">
+                <code>stockfish = new Worker('https://cdn.jsdelivr.net/npm/stockfish.js@10.0.2/stockfish.js');</code>
+            </div>
+            <p>Replace it with:</p>
+            <div class="code-block">
+                <code>stockfish = new Worker('stockfish.js');</code>
+            </div>
+            <p>Also update line ~1070 (in the tryAlternativeStockfish function) the same way.</p>
+        </div>
+
+        <div class="step">
+            <strong>Step 4: Run with Local Server</strong>
+            <p>Due to browser security, you need to run the file through a local server:</p>
+            
+            <p><strong>Option A - Python (if installed):</strong></p>
+            <div class="code-block">
+                <code># Open terminal/command prompt in the chs folder
+cd Desktop/chs
+
+# Python 3
+python -m http.server 8000
+
+# Python 2
+python -m SimpleHTTPServer 8000</code>
+            </div>
+
+            <p><strong>Option B - Node.js (if installed):</strong></p>
+            <div class="code-block">
+                <code># Install http-server globally (once)
+npm install -g http-server
+
+# Run server
+cd Desktop/chs
+http-server -p 8000</code>
+            </div>
+
+            <p><strong>Option C - VS Code:</strong></p>
+            <p>Install "Live Server" extension and right-click chess.html → "Open with Live Server"</p>
+        </div>
+
+        <div class="step">
+            <strong>Step 5: Open in Browser</strong>
+            <p>Navigate to: <a href="http://localhost:8000/chess.html" target="_blank">http://localhost:8000/chess.html</a></p>
+            <p>The engine status should show "Engine: Ready" in green!</p>
+        </div>
+
+        <div class="success">
+            <strong>✅ Success!</strong>
+            <p>You can now:</p>
+            <ul>
+                <li>Play against Stockfish AI</li>
+                <li>Analyze your games</li>
+                <li>Get move classifications (Brilliant, Great, Best, etc.)</li>
+                <li>See position evaluations</li>
+            </ul>
+        </div>
+
+        <h2>🔧 Alternative: Manual Download</h2>
+        
+        <div class="step">
+            <strong>If automatic download doesn't work:</strong>
+            <ol>
+                <li>Visit: <a href="https://github.com/nmrugg/stockfish.js/releases" target="_blank">https://github.com/nmrugg/stockfish.js/releases</a></li>
+                <li>Find version 10.0.2 or latest</li>
+                <li>Download <code>stockfish.js</code> or <code>stockfish.wasm.js</code></li>
+                <li>Follow steps 2-5 above</li>
+            </ol>
+        </div>
+
+        <h2>❓ Troubleshooting</h2>
+
+        <div class="warning">
+            <strong>⚠️ "Engine: Not available" error?</strong>
+            <ul>
+                <li>Make sure stockfish.js is in the same folder as chess.html</li>
+                <li>Verify you're using a local server (not file:// protocol)</li>
+                <li>Check browser console (F12) for specific errors</li>
+                <li>Try a different browser (Chrome recommended)</li>
+                <li>Ensure JavaScript is enabled</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ CORS errors?</strong>
+            <p>This means you're opening the file directly (file:// protocol). You MUST use a local server as described in Step 4.</p>
+        </div>
+
+        <h2>🎮 Ready to Play!</h2>
+        <p class="center">Once setup is complete, enjoy your chess game with full AI and analysis features!</p>
+        <div class="center">
+            <a href="chess.html" class="download-btn">🎯 Open Chess Game</a>
+        </div>
+    </div>
+</body>
+</html>
